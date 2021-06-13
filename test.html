@@ -8,14 +8,71 @@
         integrity="sha512-EZLkOqwILORob+p0BXZc+Vm3RgJBOe1Iq/0fiI7r/wJgzOFZMlsqTa29UEl6v6U6gsV4uIpsNZoV32YZqrCRCQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Document</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@100&display=swap');
+        header {
+            text-align: center;
+        }header > h1, header > h2{
+            margin: 0;
+        }
+        header > h2{
+            font-family: 'M PLUS 1p', sans-serif;
+            color: gray;
+            font-size: 36px;
+        }
+        form{
+            margin-bottom: 10px;
+        }
+        .cont, .sub{
+            display: inline-table;
+            justify-content: space-around;
+            align-items: center;
+        }
+        .sub{
+            vertical-align: middle;
+        }
+        .sub h3{
+            vertical-align: middle;
+        }#sub1,#sub2{
+            margin: 20px;
+            padding: 10px;
+            border: 1px black solid;
+            border-radius: 5px;
+            width: 40%;
+        }.jap{
+            font-family: 'M PLUS 1p', sans-serif;
+        }
+    </style>
 </head>
 <body>
-    <form id="form">
-        <input type="text" placeholder="japanese / 日本語" id="inputText">
-        <input type="checkbox" id="checkbox">
-        <input type="submit">
-    </form>
-    <span id="output"></span>
+    <header>
+        <h1>Romaji into Japanese converter</h1>
+        <h2>ローマ字から日本語へのコンバーター</h2>
+    </header>
+    <div className='cont'>
+        <div class='sub' id="sub1">
+            <h3>Romaji / <span class="jap">ローマ字</span></h3><br/>
+            <form id="formrom">
+                <input type="text" placeholder="Enter text / テキストを入力" id="inprom" style="width: 100%"></input><br />
+                <input type="submit" value="convert">
+            </form>
+        </div>
+        <div class='sub' id="change">
+            <form id="change">
+                <input type="submit" value="↔">
+            </form>
+        </div>
+        <div class='sub' id="sub2">
+            <h3>Japanese / <span class="jap">日本語 ( カタカナと平仮名 )</span></h3><br />
+            <form id="formjap">
+                <input type="text" placeholder="Enter text / テキストを入力" id="inpjap" style="width: 100%"></input><br />
+                <input type="submit" value="convert">
+            </form>
+            
+        </div>
+    </div>
+    
+    
     <script src="common.js"></script>
     <script src="app.js"></script>
 </body>

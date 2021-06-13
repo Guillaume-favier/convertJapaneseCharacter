@@ -54,11 +54,40 @@ const convert = (text,dico,sence) => {
 	console.log("from \""+text+"\" to \""+res+"\"")
 	return res
 }
-document.getElementById("checkbox").onchange = (e)=>{
-	if (e.target.checked) document.getElementById("inputText").placeholder = "romanji / ローマ字"
-	else document.getElementById("inputText").placeholder = "japanese / 日本語"
+
+const setup = () => {
+	document.getElementById("formrom").onsubmit = (e) => {
+		e.preventDefault()
+		document.getElementById("inpjap").value = convert(e.target[0].value, dico, true)
+	}
+	document.getElementById("formjap").onsubmit = (e) => {
+		e.preventDefault()
+		document.getElementById("inprom").value = convert(e.target[0].value, dico, false)
+	}
 }
-document.getElementById("form").onsubmit = (e) => {
+
+const change = (e) => {
+	
+	const val = [document.getElementById("inprom").value,document.getElementById("inpjap").value]
+	const tmp = document.getElementById("sub1").innerHTML
+	document.getElementById("sub1").innerHTML = document.getElementById("sub2").innerHTML
+	document.getElementById("sub2").innerHTML = tmp
+	document.getElementById("inprom").value = val[0]
+	document.getElementById("inpjap").value = val[1]
+	setup()
+}
+document.addEventListener('keydown', (event) => {
+  const keyName = event.key;
+  if (keyName === 'Control') return;
+  if (event.ctrlKey) {
+    if (keyName == "b") {
+		change()
+	}
+  }
+}, false);
+
+document.getElementById("change").onsubmit = (e) => {
 	e.preventDefault()
-	document.getElementById("output").innerHTML = convert(e.target[0].value, dico,e.target[1].checked)
+	change()
 }
+setup()
